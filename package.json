@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.5.0",
+    "node": "^18.7.0",
+    "nodemon": "^2.0.19"
+  },
+  "name": "eventbrite",
+  "description": "Final project Module 2 Ironhack - Eventbrite Clone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon -e js,css,html,hbs app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlmuVera/eventbrite.git"
+  },
+  "keywords": [],
+  "author": "Almudena Vigara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlmuVera/eventbrite/issues"
+  },
+  "homepage": "https://github.com/AlmuVera/eventbrite#readme"
+}
