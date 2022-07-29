@@ -7,7 +7,7 @@ app.set("view engine", "hbs")
 //app.use(logger("dev"))
 app.use(express.static(`${__dirname}/public`))
 //para que la web recoja el body de las peticiones post:
-// app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 
 // Router configuration
 const routes = require("./config/routes.config.js");
