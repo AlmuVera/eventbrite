@@ -1,0 +1,15 @@
+<div class="wrapper-detail" background-color="red">
+    <div class="header-detail" style="background-image:{{event.image}}; background-size:cover;">
+        <h1 class="title-detail">{{event.title}}</h1>
+        <img class= "img-detail" src="{{event.image}}" alt="{{event.title}}">
+
+
+    </div>
+    <div class="body-detail">
+        <p>{{event.description}}</p>
+    </div>
+    <form action="/events/{{event.id}}/delete" method="post">
+        <button type="submit">Eliminar evento</button>
+    </form>
+</div>
+

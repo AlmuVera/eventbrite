@@ -1,0 +1,55 @@
+
+
+{{!-- <a href="/new" class="btn btn-secondary">Create event</a>
+<hr/> --}}
+
+
+
+{{> headerlist}}
+
+ <div class='wrapper'>
+    <nav class="nav-home">
+
+            <ul>
+                <li><button id="linkAll">Todos</button></li>
+                <li><button id="linkOnline">Online</button></li>
+                <li><button id="linkFree">Gratis</button></li>
+            </ul>
+        </nav>
+    <div class="header">
+        <h2>Eventos populares</h2>
+    </div>
+        
+    <div class="cards-wrap" "all">
+         {{#each events as |event|}}
+        <div class="card-item {{event.city}}">
+            <div class="card-inner">
+                <a class="" href="/events/{{event.id}}">
+                    <img src="{{event.image}}" alt="">  
+                </a>
+                
+                
+                <div class="card-info">
+                    <div class="card-title">
+                        <h3>
+                            <a class="" href="/events/{{event.id}}">{{event.title}}</a>
+                        </h3>
+                    </div>
+                    <div class="card-date">{{event.date}}</div>
+                    <div> 
+                        <p class="card-location">{{event.location}}</p>
+                    </div>
+                    <div>
+                        <p class="card-price">{{event.price}}</p>
+                    </div>
+                    <div>
+                        <h4 class="card-organizer">{{event.organizer}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div> 
+    
+</div>  
+

@@ -1,0 +1,21 @@
+<h2 class="mb-2">Crea un evento</h2>
+<form class="form-new-event" action="/events" method="post">
+
+  <div class="mb-1">
+    <input type="text" name="title" value="{{ event.title }}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Titulo del evento" />
+    {{#if errors.title }}<div class="invalid-feedback">{{ errors.title }}</div>{{/if}}
+  </div>
+
+  <div class="mb-1">
+    <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" placeholder="Descripción del evento" aria-label="Event description" >{{ event.description}} </textarea>
+    {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
+  </div>
+
+  <div class="mb-1">
+    <input type="text" name="image" value="{{ event.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+      placeholder="Enter event image url..." />
+    {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear evento</button>
+</form>

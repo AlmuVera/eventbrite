@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px;
+  }
+  h1, h2, h3, h4, h5{
+    font-weight: 700 !important;
+}
+
+/* nav-bar */
+.navbar .nav-bar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.logo-nav{
+    margin-left: 20px;
+    padding-left: 20px;  
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;   
+   /* justify-content: center; */  
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px; 
+    padding-right: 20px;
+}
+
+.nav-menu a{
+    text-decoration: none;
+    font-size: 12px;
+    margin: 10px 20px;
+    padding: 30px 0;
+}
+
+.nav-menu a:hover{
+    background-color: #f7f6fa;
+    margin: 10px 20px;
+    padding: 30px 0;
+}
+.nav-menu{
+    font-weight: 700;
+}
+.nav-menu .register{
+    color:#4c4a60;
+    
+}
+
+/* header main page - list.hbs*/
+
+  .header .container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-left: 50px;
+    /* padding: 100px; */
+  }
+
+  .header-main-title h1{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+  }
+
+.header-title-top{
+    font-size: 36px;
+    padding-bottom: 4px;
+    color:#f05537;
+    font-weight: 700;
+}
+.header-title-bottom{
+    font-size: 60px;
+    color: black;
+    font-weight: bold;
+}
+.header-photo-bg img {
+   /* height: auto;
+   width: 120%; */
+   margin: auto 50px;
+   width: 620px;
+   
+}
+/*Wrapper*/
+.wrapper{
+    padding:50px;
+}
+.wrapper .nav-home li{
+    display: inline-block;
+    padding: 20px 50px;
+    
+  
+}
+
+.wrapper .nav-home button{
+    border: none;
+    background: none;
+    color: #6f7287;
+    border-bottom: 2px solid white;
+}
+.wrapper .nav-home button:hover{
+    color: black;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+.wrapper .nav-home button:focus{
+    color: black;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+.wrapper .header{
+    width: 100%;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    padding-bottom: 20px ;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+.cards-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cards-wrap .card-item{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    width: 280px; 
+   
+
+}
+
+.cards-wrap .card-item img{
+    width: 280px; 
+    height: 140px;
+   
+}
+
+.cards-wrap .card-inner{
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    min-width: 225px;
+    min-height: 315px;
+    width: 100%;
+    box-shadow: 0px 3px 20px rgba(9, 10, 14, 0.06) 6%);
+
+}
+
+.cards-wrap .card-inner:hover{ 
+   
+    box-shadow: 0 4px 16px 8px rgb(40 44 53 / 10%);
+}
+
+.cards-wrap .card-inner .card-info{
+    padding: 0 20px 20px;  
+}
+
+.card-inner .card-title a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    /* white-space: nowrap; */
+
+}
+
+.card-inner .card-date{
+    color: #d1410c;
+    font-weight: 700;
+    
+}
+
+.card-inner .card-location{
+    color: #6f7287;
+}
+.card-inner .card-price{
+    color: #6f7287;
+}
+
+.hidden{
+content-visibility: hidden;
+
+}
+
+/* Event Form - new.hbs*/
+.form-new-event{
+    margin-bottom: 100px;
+}
+
+
+/* Event detaail - detail.hbs */
+img{
+    
+}
+
+
+/* footer */
+footer{
+    position: absolute;
+    /* bottom: 0; */
+    background-color: #1e0a3c;
+    color:white;
+    font-size: 10px;
+    padding: 30px 50px;
+    width: 100%;
+}
+/**/
+@media screen and (max-width: 1024px){
+    .cards-wrap .card-item{
+        width: 100%; 
+    }
+}
+
+@media screen and (max-width: 768px){
+    .cards-wrap .card-item{
+        width: 364px;
+        height: 182px;
+        
+    }
+}
+
+@media screen and (max-width: 568px){
+    .cards-wrap .card-item{
+        width: 100%;
+    }
+}
+
+
+/* 
+.link-btn{
+    background-color: #d1410c;
+    color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 150px;
+    text-decoration: none;
+    padding:10px;
+    border-radius: 4px;
+  } */
