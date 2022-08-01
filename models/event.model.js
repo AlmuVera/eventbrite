@@ -7,20 +7,11 @@ const eventSchema = new Schema({
     type: String,
     required: "El título es obligatorio",
     minLength: [5, "El título debe tener al menos 5 caracteres"],
-  },
-//   author: {
-//     type: Schema.Types.ObjectId,
-//     required: true,
-//     ref: "User",
-//   },
-  description: {
-    type: String,
-    required: "El título es obligatorio",
-    minLength: [10, "La descripción debe tener al menos 10 caracteres"],
+    uppercase: true,
   },
   image: {
     type: String,
-    default: "https://play-lh.googleusercontent.com/OQ41QAbOAeAuXT4_BUlGcxs_lZOGxJ1L19uLOkvvf2gMfo6sfRkBxIMB7IbaCXEws55D",
+    default: "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png",
     validate: {
       validator: function (image) {
         try {
@@ -33,11 +24,52 @@ const eventSchema = new Schema({
       message: (image) => `URL no válida`,
     },
   },
-  date:{},
-  location:{
+  description: {
     type: String,
+    required: "El título es obligatorio",
+    minLength: [10, "La descripción debe tener al menos 10 caracteres"],
   },
+  location: {
+    type: String,
+    //por ahora...despues google maps api
+  },
+  price:{
+    type: Number,
+    min: 0,
+    required: ""
+  },
+  date:{ 
+    type: Date, 
+    default: Date.now 
+    },
 
+
+    //settear hora del evento:
+//   start:{
+//       type: Date,
+//       required:"Elige una fecha para el evento",
+//   },
+//   end:{
+//       type: Date,
+//       required:"Elige una fecha para el evento"
+
+//   },
+//   location:{   
+        //dos opciones:
+        // -online:false
+        // -usar googlemaps 
+//   },
+
+//   organizer: String,(el mismo que el user que crea el evento)
+
+//   author: {
+//     type: Schema.Types.ObjectId,
+//     required: true,
+//     ref: "User",
+//   },
+
+//   ticketStatus: String, //sold out or available  
+ 
 });
 
 eventSchema.pre("validate", function (next) {
@@ -52,9 +84,7 @@ module.exports = Event
 
 
 
-//         date: String,
-//         location: String,
-//         city: String,
-//         price: Number,
-//         organizer: String,
-//         ticketStatus: String, //sold out or available   
+
+
+
+  

@@ -22,14 +22,21 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-    const event = {
-        ...req.body,
-    };
-  
+    const event = req.body;
+    
+    // return res.json(req.body)
+
     Event.create(event)
-        .then((event) => res.redirect("/"))
-        .catch((error) => next(error));
- };
+        .then((event) => res.redirect("/events"))
+        .catch((error) => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                console.error(error);
+                res.render("events/new", { errors: error.errors, event });
+              } else {
+                next(error);
+              }
+            });
+};
  
 
 module.exports.delete = (req, res, next) => {

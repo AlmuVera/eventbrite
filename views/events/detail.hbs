@@ -1,15 +1,68 @@
-<div class="wrapper-detail" background-color="red">
-    <div class="header-detail" style="background-image:{{event.image}}; background-size:cover;">
-        <h1 class="title-detail">{{event.title}}</h1>
-        <img class= "img-detail" src="{{event.image}}" alt="{{event.title}}">
 
-
-    </div>
-    <div class="body-detail">
-        <p>{{event.description}}</p>
-    </div>
-    <form action="/events/{{event.id}}/delete" method="post">
-        <button type="submit">Eliminar evento</button>
-    </form>
+<div>
+  <a href="/events"> &lt; Eventos</a>
 </div>
+<div class="container-fluid">
+  <div class="row header-container">
+    <div class="col-xl-8 col-lg-8 col-md-12 header-img-size" style="border:1px solid #ddd">
+      <img src="{{event.image}}" alt="{{event.title}} image" class="header-img">
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12 header-info" style="border:1px solid #ddd">
+      <p>{{prettyMonth event.date}}</p>
+      <p>{{prettyDay event.date}}</p>
+      <h2>{{event.title}}</h2>
+      <p>{{event.price}}</p>
+    </div>
+  </div>
+  <div class="row bar-register">
+    <div class="col-12" style="border:1px solid #ddd">
+      <div class="row">
+      
+        <div class="col-xl-4 col-lg-4 col-md-12">
+          <svg xmlns="http://www.w3.org/2000/svg" id="share-ios-chunky_svg__eds-icon--share-ios-chunky_svg" x="0" y="0" viewBox="0 0 24 24" xml:space="preserve"><path id="share-ios-chunky_svg__eds-icon--share-ios-chunky_base" fill-rule="evenodd" clip-rule="evenodd" d="M18 16v2H6v-2H4v4h16v-4z"/><path id="share-ios-chunky_svg__eds-icon--share-ios-chunky_arrow" fill-rule="evenodd" clip-rule="evenodd" d="M12 4L7 9l1.4 1.4L11 7.8V16h2V7.8l2.6 2.6L17 9l-5-5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" id="heart-chunky_svg__eds-icon--user-chunky_svg" x="0" y="0" viewBox="0 0 24 24" xml:space="preserve"><path id="heart-chunky_svg__eds-icon--heart-chunky_base" fill-rule="evenodd" clip-rule="evenodd" d="M18.8 6.2C18.1 5.4 17 5 16 5c-1 0-2 .4-2.8 1.2L12 7.4l-1.2-1.2C10 5.4 9 5 8 5c-1 0-2 .4-2.8 1.2-1.5 1.6-1.5 4.2 0 5.8l6.8 7 6.8-7c1.6-1.6 1.6-4.2 0-5.8zm-1.4 4.4L12 16.1l-5.4-5.5c-.8-.8-.8-2.2 0-3C7 7.2 7.5 7 8 7c.5 0 1 .2 1.4.6l2.6 2.7 2.7-2.7c.3-.4.8-.6 1.3-.6s1 .2 1.4.6c.8.8.8 2.2 0 3z"/></svg>        
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-0"></div>
+        <div class="col-xl-4 col-lg-4 col-md-12">
+          <div class="link-btn" href="/html/event.html">Registrar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row info-event" style="border:1px solid #ddd">
+    <div class="col-sm-8">
+      <p>{{lowerCase event.title}}</p>
+      <h5>Acerca de este evento</h5>
+      <p>{{event.description}}</p>
+
+    </div>
+    <div class="col-sm-4 info-event-summary">
+      <span class="glyphicon glyphicon-signal logo">
+        <div class="info-date"> 
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><path id="calendar-fill_svg__24_small_calendar_fill-a" d="M14 0h1v2h5v4H0V2h5V0h1v2h8V0zM0 20V7h20v13H0zm13-10v2h2v-2h-2zm-4 0v2h2v-2H9zm-4 0v2h2v-2H5zm8 4v2h2v-2h-2zm-4 0v2h2v-2H9zm-4 0v2h2v-2H5z"/></defs><g fill="none" fill-rule="evenodd" transform="translate(2 2)"><mask id="calendar-fill_svg__24_small_calendar_fill-b" fill="#fff"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar-fill_svg__24_small_calendar_fill-a"/></mask><use fill="#45494E" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar-fill_svg__24_small_calendar_fill-a"/><g mask="url(#calendar-fill_svg__24_small_calendar_fill-b)"><path fill="#000" d="M-2-2h24v24H-2z"/></g></g></svg>
+          <span>Fecha y hora</span>
+          <p>{{prettyDate event.date}}</p>
+        </div>
+        <div class="info-location">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><path id="map-pin-fill_svg__24_small_map_pin_fill-a" d="M7 0a7 7 0 00-7 7c0 2.015 1.016 3.985 2 5.5.985 1.515 5 7.5 5 7.5s3.985-5.985 5-7.5c1.015-1.515 2-3.485 2-5.5a7 7 0 00-7-7m0 9.5c1.378 0 2.5-1.122 2.5-2.5S8.378 4.5 7 4.5A2.503 2.503 0 004.5 7c0 1.378 1.122 2.5 2.5 2.5"/></defs><g fill="none" fill-rule="evenodd" transform="translate(5 2)"><mask id="map-pin-fill_svg__24_small_map_pin_fill-b" fill="#fff"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#map-pin-fill_svg__24_small_map_pin_fill-a"/></mask><use fill="#45494E" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#map-pin-fill_svg__24_small_map_pin_fill-a"/><g mask="url(#map-pin-fill_svg__24_small_map_pin_fill-b)"><path fill="#000" d="M-5-2h24v24H-5z"/></g></g></svg>
+          <span>Ubicación</span>
+          <br>
+          <a href="">ver mapa</a>
+        </div> 
+      </span>
+    </div>
+  </div>
+  <div class="row " style="border:1px solid #ddd">
+    <div class="col-sm-12 google-map">
+      AQUI VA EL MAPA
+
+    </div>
+
+  </div>
+</div>
+
+
+<form action="/events/{{event.id}}/delete" method="post">
+    <button class="link-btn" type="submit">Eliminar evento</button>
+</form>
 

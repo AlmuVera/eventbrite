@@ -1,3 +1,4 @@
+
 <h2 class="mb-2">Crea un evento</h2>
 <form class="form-new-event" action="/events" method="post">
 
@@ -15,6 +16,16 @@
     <input type="text" name="image" value="{{ event.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
       placeholder="Enter event image url..." />
     {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+  </div>
+
+  <div class="mb-1">
+    <input type="number" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
+    {{#if errors.price }}<div class="invalid-feedback">{{ errors.price }}</div>{{/if}}
+  </div>
+
+  <div class="mb-1">
+    <input type="datetime-local" name="date" value="{{ event.date }}" class="form-control {{#if errors.date }}is-invalid{{/if}}" placeholder="Fecha" />
+    {{#if errors.date }}<div class="invalid-feedback">{{ errors.date }}</div>{{/if}}
   </div>
 
   <button type="submit" class="btn btn-primary">Crear evento</button>
