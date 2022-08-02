@@ -15,7 +15,7 @@ app.use(express.static(`${__dirname}/public`))
 app.use(express.urlencoded({ extended: false }))
 
 // Router configuration
-const routes = require("./config/routes.config.js");
+const routes = require("./config/routes.config");
 app.use("/", routes);
 
 

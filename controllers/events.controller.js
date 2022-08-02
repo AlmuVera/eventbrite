@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const Event = require("../models/event.model");
-// const { Event } = require("../models");
+const { Event } = require("../models");
 
 module.exports.list = (req, res, next) => {
   Event.find()

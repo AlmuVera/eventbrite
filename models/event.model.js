@@ -29,10 +29,7 @@ const eventSchema = new Schema({
     required: "El título es obligatorio",
     minLength: [10, "La descripción debe tener al menos 10 caracteres"],
   },
-  location: {
-    type: String,
-    //por ahora...despues google maps api
-  },
+
   price:{
     type: Number,
     min: 0,
@@ -41,7 +38,18 @@ const eventSchema = new Schema({
   date:{ 
     type: Date, 
     default: Date.now 
+  },
+  location: {
+    type: {
+        type: String,
+        enum: ["Point"],
+        //required: true
     },
+    coordinates: {
+        type: [Number],
+        //required: true,
+    }
+},
 
 
     //settear hora del evento:
@@ -53,11 +61,6 @@ const eventSchema = new Schema({
 //       type: Date,
 //       required:"Elige una fecha para el evento"
 
-//   },
-//   location:{   
-        //dos opciones:
-        // -online:false
-        // -usar googlemaps 
 //   },
 
 //   organizer: String,(el mismo que el user que crea el evento)
