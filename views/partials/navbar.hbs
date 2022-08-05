@@ -1,4 +1,4 @@
-<nav class="navbar ">
+{{!-- <nav class="navbar ">
   <div class="nav-bar">
     <a href="/events"><img class = "logo-nav" src="/img/eventbrite_logo.png" alt="Eventbrite Logo"></a>
     
@@ -7,6 +7,25 @@
         <a href="/login" class="register">Iniciar sesión</a>
         <a href="/register" class="register" >Registrarse</a>
 
+    </div>
+        
+  </div>
+</nav> --}}
+
+<nav class="navbar ">
+  <div class="nav-bar">
+    <a href="/events"><img class = "logo-nav" src="/img/eventbrite_logo.png" alt="Eventbrite Logo"></a>
+    
+    <div class="nav-menu">
+      {{#if currentUser}}
+        <a href="/events/new" class="create">Crea un evento</a>
+        <a href="/users/{{currentUser.id}}">{{ currentUser.name }}</a>
+        <a href="/logout" class="register" >Logout</a>
+      {{else}}
+        <a href="/events/new" class="create">Crea un evento</a>
+        <a href="/login" class="register">Iniciar sesión</a>
+        <a href="/register" class="register" >Registrarse</a>
+      {{/if}}
     </div>
         
   </div>

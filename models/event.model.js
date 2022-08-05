@@ -24,6 +24,11 @@ const eventSchema = new Schema({
       message: (image) => `URL no válida`,
     },
   },
+  author: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
+      },
   description: {
     type: String,
     required: "El título es obligatorio",

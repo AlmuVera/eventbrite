@@ -3,7 +3,7 @@ const { Event } = require("../models");
 
 module.exports.list = (req, res, next) => {
   Event.find()
-    // .populate("author")
+    .populate("author")
     .then((events) => {
       res.render("events/list", { events });
     })
@@ -21,7 +21,10 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-    const event = req.body;
+  const event = {
+    ...req.body,
+    author: req.user.id,
+  };
     
     // return res.json(req.body)
 
