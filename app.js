@@ -14,6 +14,11 @@ app.use(express.static(`${__dirname}/public`))
 //para que la web recoja el body de las peticiones post:
 app.use(express.urlencoded({ extended: false }))
 
+//agregar aqui middelware para que la app lea cookies de session:
+const { session, loadUser} = require("./config/session.config");
+app.use(session);
+app.use(loadUser);
+
 // Router configuration
 const routes = require("./config/routes.config");
 app.use("/", routes);

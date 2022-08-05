@@ -22,7 +22,7 @@ module.exports.doRegister = (req, res, next) => {
       } else {
         return User.create(req.body).then((user) => {
           // sendRegistrationEmail(user);
-          res.redirect("/events");
+          res.redirect("/login");
           // res.redirect("/login?confirm=true");
         });
       }
@@ -35,3 +35,37 @@ module.exports.doRegister = (req, res, next) => {
       }
     });
 };
+
+module.exports.login = (req, res, next) => {
+  res.render("auth/login");
+};
+module.exports.doLogin = (req, res, next) => {
+
+  function renderInvalidLogin(){
+    res.status(400).render("auth/login", {
+      user:req.body,
+      errors: { password: 'Invalid email or password'}
+    });
+  }
+
+  const { email, password } = req.body;
+  User.findOne({ email })
+    .then(user => {
+      if (!user){
+        renderInvalidLogin();
+      } else {
+        return user.checkPassword(password)
+          .then(match => {
+            if (match) {
+              req.session.userId = user.id;
+              res.redirect('/events')
+            } else {
+              renderInvalidLogin();
+            }
+          })
+      }
+    })
+    .catch(error => next (error));
+  
+};
+
