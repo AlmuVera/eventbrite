@@ -197,6 +197,7 @@ input.register{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    
 }
 
 .cards-wrap .card-item{
@@ -204,14 +205,11 @@ input.register{
     justify-content: space-between;
     flex-wrap: wrap; 
     width: 280px; 
-   
-
 }
 
-.cards-wrap .card-item img{
+.img-event{
     width: 280px; 
-    height: 140px;
-   
+    height: 140px;  
 }
 
 .cards-wrap .card-inner{
@@ -222,7 +220,7 @@ input.register{
     min-height: 315px;
     width: 100%;
     box-shadow: 0px 3px 20px rgba(9, 10, 14, 0.06) 6%;
-
+    margin-bottom: 35px;
 }
 
 .cards-wrap .card-inner:hover{ 
@@ -256,11 +254,6 @@ input.register{
     color: #6f7287;
     font-size: 14px;
 }
-
-/* .hidden{
-content-visibility: hidden;
-
-} */
 
 /* Event Form - new.hbs*/
 .form-new-event{
@@ -352,27 +345,52 @@ footer a{
 }
 
 
-@media screen and (max-width: 1024px){
+@media screen and (min-width: 1272px){
     .cards-wrap .card-item{
-        /* width: 40%;  */
+        width: 22%;
+    }
+    .img-event{
+        width: 100%;
+        height: 128px;
     }
 }
-
-@media screen and (max-width: 768px){
+@media screen and (min-width: 1200px){
+    .cards-wrap .card-item{
+        width: 22%;
+    }
+    .img-event{
+        width: 100%;
+        height: 128px;
+    }
+}
+@media screen and (max-width: 792px){
+    .cards-wrap .card-item{
+        width: 30%;
+    }
+    .img-event{
+        width: 100%;
+        height: 106px;
+    }
+}
+@media screen and (max-width: 791px){
     .cards-wrap .card-item{
         /* width: 364px;
         height: 182px; */
-        width: 35%; 
-        
+        width: 48%;
+    }
+    .img-event{
+        width: 100%;
+        height: 180px;
     }
 }
 
-@media screen and (max-width: 568px){
+@media screen and (max-width: 660px){
     .cards-wrap .card-item {
         width: 100%;
     }
-    .card-inner img{
-        width: 506px;
+    .img-event{
+        width: 100%;
+        height: 245px;
     }
 }
 
