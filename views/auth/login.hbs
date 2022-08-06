@@ -1,30 +1,42 @@
 
-<div class="row justify-content-center">
-  <div class="col-12 col-md-6 col-lg-4">
-    <h2>Login</h2>
-
-    <form action="/login" method="post">
-    
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="email" value="{{ user.email }}" class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="name@example.com">
-        {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
-      </div>
-    
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
-        <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" placeholder="User password">
-        {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
-      </div>
-    
-      <div class="d-grid">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
-    <br>
-    <div class="d-grid">
-      <a class="btn btn-secondary" href="/register">Register</a>
+{{!-- <a href="/events"><img class = "logo-nav-register" src="/img/eventbrite_logo.png" alt="Eventbrite Logo"></a> --}}
+<div class="register">
+<form action="/login" method="post">
+  
+    <div class="row">
+      
     </div>
-     <hr>
-  </div>
+    <div class="row align-items-center">
+      <div class="col 8 ">
+        <a href="/events"><img class = "logo-nav-register" src="/img/eventbrite_logo.png" alt="Eventbrite Logo"></a>
+
+        <h1>Iniciar sesión</h1>
+        
+          <div class="input-group mb-1">
+            <input type="text" name="email" value="{{ user.email }}" class="form-control register {{#if errors.email }}is-invalid{{/if}}" placeholder="Dirección de correo electrónico">
+            {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
+          </div>
+        
+          <div class="input-group mb-1">
+            <input type="password" name="password" class="form-control register {{#if errors.password }}is-invalid{{/if}}" placeholder="Contraseña">
+            {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+          </div>
+          <br>
+          <hr>
+          <div class="d-grid">
+            <a class= "links-btn link-register" href="/register">Registrarse</a>
+          </div>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <img class="img-fluid mx-auto d-block img-register" src="https://cdn.evbstatic.com/s3-build/perm_001/c24baa/django/images/login/lateral-image-3.jpg"/>
+      </div>
+      
+  
+</form>
 </div>
+{{> footer}}
+
+30%

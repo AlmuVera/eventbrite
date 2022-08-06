@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
 const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-const PW_PATTERN = /^.{6,}$/
+const PW_PATTERN = /^.{8,}$/
 const WORK_FACTOR = 10;
 
 const userSchema = new Schema({
@@ -16,16 +16,16 @@ const userSchema = new Schema({
       },
       email: {
         type: String,
-        required: "Es necesario introducir un email",
+        required: "Introduce una dirección de correo electrónico válida.",
         unique: true,
         trim: true,
         lowercase: true,
-        match: [EMAIL_PATTERN, "email no valido"],
+        match: [EMAIL_PATTERN, "Correo electrónico no valido"],
       },
       password: {
         type: String,
-        required: "La contraseña es necesaria",
-        match: [PW_PATTERN, "Password necesita al menos 6 caracteres"],
+        required: "La contraseña debe tener un mínimo de 8 caracteres",
+        match: [PW_PATTERN, "La contraseña debe tener un mínimo de 8 caracteres"],
       },
  }
 )

@@ -1,6 +1,6 @@
-
+{{> navbar}}
 <div>
-  <a href="/events"> &lt; Eventos</a>
+  <a class="links-btn" href="/events"> Eventos</a>
 </div>
 <div class="container-fluid">
   <div class="row header-container">
@@ -24,7 +24,9 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-0"></div>
         <div class="col-xl-4 col-lg-4 col-md-12">
-          <div class="link-btn" href="/html/event.html">Registrar</div>
+          <div class="d-grid">
+            <button class="btn btn-primary" type="submit">Registrar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -61,8 +63,12 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-xl-6 col-lg-6 col-md-12">
+    <form action="/events/{{event.id}}/delete" method="post">
+    <button class="btn btn-primary delete" type="submit">Eliminar evento</button>
+  </form>
+  </div>
+</div>
 
-<form action="/events/{{event.id}}/delete" method="post">
-    <button class="link-btn" type="submit">Eliminar evento</button>
-</form>
 

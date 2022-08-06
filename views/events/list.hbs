@@ -1,10 +1,4 @@
-
-
-{{!-- <a href="/new" class="btn btn-secondary">Create event</a>
-<hr/> --}}
-
-
-
+{{!-- {{> navbar}} --}}
 {{> headerlist}}
 
  <div class='wrapper'>
@@ -53,3 +47,35 @@
     
 </div>  
 
+  {{!-- <h2>Responsive card deck example</h2>
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4">
+  <div class="col mb-4">
+    {{#each events as |event|}}
+    <div class="card card-info">
+        
+      <img src="{{event.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <div class="card-title">
+                        <h3>
+                            <a class="" href="/events/{{event.id}}">{{event.title}}</a>
+                        </h3>
+                    </div>
+                    <div class="card-date">{{prettyDate event.date}}</div>
+                    <div> 
+                        <p class="card-location">{{event.location}}</p>
+                    </div>
+                    <div>
+                        <p class="card-price">EUR {{event.price}}.00</p>
+                    </div>
+                    <div>
+                        <h4 class="card-organizer">{{event.author.name}}</h4>
+                    </div
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  
+</div>
+
+ --}}
