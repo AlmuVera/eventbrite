@@ -17,12 +17,14 @@
     />
 </head>
 <body> 
-    <nav>{{> navbar}}</nav>
+  {{> navbar}}
+
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  {{> footer}}
   
-    <div class="container">
-        {{{body}}}
-    </div>
-    <footer>{{> footer}}</footer>
     
    
   

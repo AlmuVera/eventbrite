@@ -111,9 +111,7 @@ input.register{
     color: #3d64ff
     
   }
-  .link-register{
-    margin-top: 90px;
-  }
+ 
   img.img-register{
     object-fit: cover;
     width: 100%;
@@ -164,7 +162,7 @@ input.register{
    /* margin-right: 35px; */
   
 }
-/*Wrapper*/
+/*Wrapper list.hbs*/
 .wrapper{
     padding-top:50px;
 }
@@ -360,7 +358,7 @@ footer a{
     }
     .img-event{
         width: 100%;
-        height: 128px;
+        height: 140px;
     }
 }
 @media screen and (min-width: 1200px){
@@ -369,7 +367,7 @@ footer a{
     }
     .img-event{
         width: 100%;
-        height: 128px;
+        height: 140px;
     }
 }
 @media screen and (max-width: 792px){
