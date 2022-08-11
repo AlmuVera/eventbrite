@@ -10,16 +10,14 @@ body {
   h1, h2, h3, h4, h5, h6{
     font-weight: 700 !important;
 }
-.container{
-    /* margin-left: 0 !important;
-    margin-right: 0 !important; */
-    /* margin: 0 !important; */
-}
+
 
 
 
 /* nav-bar */
-
+.navbar{
+    padding: 0 !important;
+}
 .navbar .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -45,20 +43,21 @@ body {
     justify-content: space-between;
     /* margin-right: 20px; 
     padding-right: 20px; */
+    /* margin-right: 20px; */
 }
 
 .nav-menu a{
     text-decoration: none;
     font-size: 12px;
     /* margin: 10px 20px; */
-    margin-right: 50px;
-    padding: 30px 0;
+    /* margin-right: 50px; */
+    padding: 30px 30px;
 }
 
 .nav-menu a:hover{
     background-color: #f7f6fa;
-    margin-right: 50px;
-    padding: 30px 0;
+    /* margin-right: 50px; */
+    padding: 30px 30px;
 }
 .nav-menu{
     font-weight: 700;
@@ -67,6 +66,45 @@ body {
     color:#4c4a60;
     
 }
+
+/* menu nav-bar dropdown */
+.dropdown{
+    margin-top: 25px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fefefe;
+  
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:0;
+  }
+  
+  .dropdown-content a {
+    /* float: none; */
+    color: #a1a4b0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    width: 200px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f8f7fa;
+    color: #4c4a61;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
 /* register&login*/
 
 
@@ -128,7 +166,7 @@ input.register{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-top: auto;
+    margin-top: 20px;
     width: 100%;
     /* margin-left: 50px; */
     /* padding: 100px; */
@@ -226,10 +264,11 @@ input.register{
     min-width: 225px;
     min-height: 315px;
     width: 100%;
-    box-shadow: 0px 3px 20px rgba(9, 10, 14, 0.06) 6%;
     margin-bottom: 35px;
 }
-
+.cards-wrap .card-inner{ 
+    box-shadow: 0 4px 16px 8px rgb(40 44 53 / 5%);
+}
 .cards-wrap .card-inner:hover{ 
    
     box-shadow: 0 4px 16px 8px rgb(40 44 53 / 10%);

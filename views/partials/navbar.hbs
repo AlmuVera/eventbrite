@@ -1,19 +1,34 @@
-
-<nav class="navbar ">
+<nav class="navbar">
   <div class="nav-bar">
-    <a href="/events"><img class = "logo-nav" src="/img/eventbrite_logo.png" alt="Eventbrite Logo"></a>
-    
+    <a href="/events"><img
+        class="logo-nav"
+        src="/img/eventbrite_logo.png"
+        alt="Eventbrite Logo"
+      /></a>
     <div class="nav-menu">
       {{#if currentUser}}
-        <a href="/events/new" class="create">Crea un evento</a>
-        <a href="/users/{{currentUser.id}}">{{ currentUser.name }}</a>
-        <a href="/logout" class="register" >Logout</a>
+        <a href="/events/new" class="create">
+        <i class="fa fa-plus" style="margin-right: 10px;"></i>
+          Crea un evento
+        </a>
+        <div class="dropdown" style="float:right;">
+          <a>
+            <i class="fa fa-user" style="margin-right: 10px;"></i> 
+            {{currentUser.name}}
+            <i class="fa fa-angle-down"></i>
+          </a>
+
+          <div class="dropdown-content">
+            <a href="/users/list">Gestionar mis eventos</a>
+            <a href="#">Entradas</a>
+            <a href="/logout" class="register">Cerrar sesión</a>
+          </div>
+        </div>
       {{else}}
         <a href="/events/new" class="create">Crea un evento</a>
         <a href="/login" class="register">Iniciar sesión</a>
-        <a href="/register" class="register" >Registrarse</a>
+        <a href="/register" class="register">Registrarse</a>
       {{/if}}
     </div>
-        
   </div>
 </nav>

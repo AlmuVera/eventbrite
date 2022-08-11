@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { events, auth } = require("../controllers");
+const { events, auth, users } = require("../controllers");
 const secure = require("../middlewares/secure.mid");
 
 router.get("/events", events.list);
@@ -21,6 +21,7 @@ router.get("/login", auth.login);
 router.post('/login', auth.doLogin);
 router.get("/logout", auth.logout);
 
+router.get("/users/list", secure.isAuthenticated, users.list);
 
 
 module.exports = router;

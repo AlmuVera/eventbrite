@@ -42,7 +42,21 @@ module.exports.create = (req, res, next) => {
  
 
 module.exports.delete = (req, res, next) => {
-  Event.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect("/events"))
+  Event.findById(req.params.id)
+    .populate("author")
+    .then((event) => {
+     console.log(res.locals.currentUser)
+     console.log(event.author)
+
+      if(res.locals.currentUser._id.equals(event.author._id)){
+        console.log("event")
+        Event.findByIdAndRemove(req.params.id)
+      .then(() => console.log("yuhuuuuuuuuu"))
+      }
+      res.redirect("/users/list")}
+    )
     .catch((error) => next(error));
 };
+
+
+// res.locals.currentUser = user;

@@ -1,0 +1,12 @@
+<h1>Eventos</h1>
+<p>{{user.name}}</p>
+<p>{{user.email}}</p>
+
+<hr/>
+
+<ul>
+    
+{{#each events as |event|}}
+    <li><a href="/events/{{event._id}}">{{event.title}}</li></a>
+{{/each}}
+</ul>

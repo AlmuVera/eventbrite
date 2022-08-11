@@ -57,6 +57,8 @@ const eventSchema = new Schema({
 },
 
 
+
+
     //settear hora del evento:
 //   start:{
 //       type: Date,
@@ -70,11 +72,7 @@ const eventSchema = new Schema({
 
 //   organizer: String,(el mismo que el user que crea el evento)
 
-//   author: {
-//     type: Schema.Types.ObjectId,
-//     required: true,
-//     ref: "User",
-//   },
+//  
 
 //   ticketStatus: String, //sold out or available  
  
