@@ -1,12 +1,31 @@
 <h1>Eventos</h1>
-<p>{{user.name}}</p>
-<p>{{user.email}}</p>
-
 <hr/>
 
-<ul>
-    
-{{#each events as |event|}}
-    <li><a href="/events/{{event._id}}">{{event.title}}</li></a>
-{{/each}}
+
+
 </ul>
+{{#each events as |event|}}
+
+<div class="card mb-3" >
+  <div class="row g-0" >
+    <div class="col-md-4 m-3" style="max-width: 200px;">
+      <img src="{{event.image}}" class="img-fluid rounded-start" alt="{{event.title}}">
+    </div>
+    <div class="col-md-6" >
+      <div class="card-body -fluid">
+        <h5 class="card-title">{{event.title}}</h5>
+        <p class="card-text">{{event.location}}</p>
+        <p class="card-text"><small class="text-muted">{{prettyDate event.date}}</small></p>
+        
+      </div>
+    </div>
+    <div class="col-md-3 m-3">
+        
+            <button class="btn btn-primary" style="width: 100%;">Editar/borrar</button>
+   
+    </div>
+    
+  </div>
+</div>
+{{/each}}
+

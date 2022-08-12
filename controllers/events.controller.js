@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Event } = require("../models");
+const { User, Event } = require("../models");
 
 module.exports.list = (req, res, next) => {
   Event.find()
@@ -57,6 +57,23 @@ module.exports.delete = (req, res, next) => {
     )
     .catch((error) => next(error));
 };
+//tickets of the currentUser: users have tickets
+module.exports.buyticket = (req, res, next) => {
+  User.updateOne(
+    { _id: res.locals.currentUser._id },
+    { $addToSet: {tickets: req.params.id }}
+  )
+    .then((result) => {
+      // console.log(`result of operation: ${result}`)
+      res.render('users/tickets')
+    })
+    .catch((error) => next(error));
+}
 
+module.exports.buyticketconfirmation = (req, res, next) => {
+  Event.findById(req.params.id)
+      .then((event) => res.render("events/buyticket", { event }))
+      .catch((error) => next(error))
+};
 
 // res.locals.currentUser = user;

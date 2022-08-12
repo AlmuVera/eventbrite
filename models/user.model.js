@@ -1,3 +1,5 @@
+//requiero Event  para que funcione el virtual
+// const Event = require('./event.model')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
@@ -27,6 +29,11 @@ const userSchema = new Schema({
         required: "La contraseña debe tener un mínimo de 8 caracteres",
         match: [PW_PATTERN, "La contraseña debe tener un mínimo de 8 caracteres"],
       },
+      tickets: {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+      },
+     
  }
 )
 //para almacenar el password hasheado:
@@ -48,6 +55,14 @@ userSchema.pre("save", function (next) {
 userSchema.methods.checkPassword = function (passwordToCheck) {
   return bcrypt.compare(passwordToCheck, this.password);
 };
+
+// userSchema.virtual("tickets", {
+//   ref: "Event",
+//   localField: "_id", // on user model
+//   foreignField: "author", // on event model
+//   justOne: false,
+// });
+
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;

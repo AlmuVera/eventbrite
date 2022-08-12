@@ -1,5 +1,4 @@
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
@@ -11,7 +10,8 @@ const eventSchema = new Schema({
   },
   image: {
     type: String,
-    default: "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png",
+    default:
+      "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png",
     validate: {
       validator: function (image) {
         try {
@@ -25,72 +25,65 @@ const eventSchema = new Schema({
     },
   },
   author: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: "User",
-      },
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   description: {
     type: String,
     required: "El título es obligatorio",
     minLength: [10, "La descripción debe tener al menos 10 caracteres"],
   },
 
-  price:{
+  price: {
     type: Number,
     min: 0,
-    required: ""
+    required: "",
   },
-  date:{ 
-    type: Date, 
-    default: Date.now 
+  startDate: {
+    type: Date,
+    default: Date.now,
   },
+
+   endDate: {
+    type: Date,
+    default: Date.now,
+  },
+
+
+
+//
   location: {
     type: {
-        type: String,
-        enum: ["Point"],
-        //required: true
+      type: String,
+      enum: ["Point"],
+      //required: true
     },
     coordinates: {
-        type: [Number],
-        //required: true,
-    }
+      type: [Number],
+      //required: true,
+    },
+  },
+  availability: {
+    type: Number,
+    required: "Es necesario indicar la capacidad de asistentes al evento",
+  },
+
+
+  //   organizer: String,(el mismo que el user que crea el evento)
+
+  //
+
+  //   ticketStatus: String, //sold out or available
 },
 
-
-
-
-    //settear hora del evento:
-//   start:{
-//       type: Date,
-//       required:"Elige una fecha para el evento",
-//   },
-//   end:{
-//       type: Date,
-//       required:"Elige una fecha para el evento"
-
-//   },
-
-//   organizer: String,(el mismo que el user que crea el evento)
-
-//  
-
-//   ticketStatus: String, //sold out or available  
- 
-});
+);
 
 eventSchema.pre("validate", function (next) {
-    this.image = this.image || undefined;
-    next();
-  });
+  this.image = this.image || undefined;
+  next();
+});
 
 const Event = mongoose.model("Event", eventSchema);
 
-module.exports = Event
-
-
-
-
-
-
-
-  
+module.exports = Event;

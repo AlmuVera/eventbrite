@@ -23,6 +23,9 @@ router.get("/logout", auth.logout);
 
 router.get("/users/list", secure.isAuthenticated, users.list);
 
+router.get("/events/:id/buyticket", secure.isAuthenticated, events.buyticketconfirmation)
+router.post("/events/:id/buyticket", secure.isAuthenticated, events.buyticket)
 
+router.get("/users/tickets", secure.isAuthenticated, users.tickets);
 module.exports = router;
 

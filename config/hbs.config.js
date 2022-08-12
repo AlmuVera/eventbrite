@@ -5,6 +5,7 @@ hbs.registerPartials(__dirname + "/../views/partials");
 hbs.registerHelper("prettyDate", (date) => date?.toDateString());
 hbs.registerHelper("prettyMonth", (date) => date?.getMonth()+1);
 hbs.registerHelper("prettyDay", (date) => date?.getDate());
+hbs.registerHelper("prettyTime", (date) => date?.toTimeString()());
 
 hbs.registerHelper("lowerCase", (title) => title?.toLowerCase());
 
@@ -20,4 +21,7 @@ hbs.registerHelper("lowerCase", (title) => title?.toLowerCase());
 //         options.inverse(this)
 //     }
 // });
-
+//esto es pa borrar:
+/* <form action="/events/{{event.id}}/buyticket" method="post">
+    <button class="btn btn-primary " type="submit">Registrar</button>
+</form> */
