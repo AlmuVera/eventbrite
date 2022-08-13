@@ -7,7 +7,6 @@
     </a>
   </div>
   <div class="col-12 col-md-6 col-lg-6 mt-3 form-new-event">
-    <i class="fa-regular fa-text"></i><i class="fa fa-angle-left"></i>
     <form class="" action="/events" method="post">
       <div>
         <h2 class=""><i class='fa fa-quote-left'></i> Nombre del evento</h2>
@@ -30,18 +29,17 @@
 
       <h2 class="mb-2"><i class='fa fa-calendar'></i> Fecha y hora</h2>
       <p>Informa a los asistentes cuándo empieza y termina el evento para que puedan organizarse.</p>
-       <div class="mb-1">
+      <div class="date-time">
+       <div class="mb-1 date-time-element">
         <label for="" style="font-size: 10px" >El evento comienza:</label> 
-        <input type="datetime-local" name="startDate" value="{{ event.startDate }}" class="form-control {{#if errors.startDate }}is-invalid{{/if}}" placeholder="Fecha" style="width: 50%"/>
+        <input type="datetime-local" name="startDate" value="{{ event.startDate }}" class="form-control {{#if errors.startDate }}is-invalid{{/if}}"/>
           {{#if errors.startDate }}<div class="invalid-feedback">{{ errors.startDate }}</div>{{/if}}
-        
-       
-
-      <div class="mb-1">
+        </div>
+      <div class="mb-1 date-time-element">
       <label for="" style="font-size: 10px" >El evento termina:</label> 
-      <input type="datetime-local" name="endDate" value="{{ event.endDate }}" class="form-control {{#if errors.endDate }}is-invalid{{/if}}" placeholder="Fecha" style="width: 50%"/>
+      <input type="datetime-local" name="endDate" value="{{ event.endDate }}" class="form-control {{#if errors.endDate }}is-invalid{{/if}}"/>
         {{#if errors.endDate }}<div class="invalid-feedback">{{ errors.endDate }}</div>{{/if}}
-      
+      </div>
       </div>
       <hr>
       

@@ -47,17 +47,4 @@ module.exports.tickets = (req, res, next) => {
 //      .catch((err) => next(err));
 //   };
 
-// module.exports.tickets = (req, res, next) => {
-//    User.findById(res.locals.currentUser._id)
-//      .populate("tickets")
-//      .then((tickets) => {
-//         console.log(tickets)
-//          if (tickets) {
-//          res.render("users/tickets", { tickets });
-//        } else {
-//          res.redirect("/events");
-//        }
-//      })
-//      .catch((err) => next(err));
-//  };
 
