@@ -1,0 +1,105 @@
+<h1>hola que aseee</h1>
+<h2>{{event.title}}</h2>
+<section>
+<div class="row justify-content-center">
+  <div>
+    <a class="links-btn" href="/events">
+      <i class="fa fa-angle-left"></i>
+      Eventos
+    </a>
+  </div>
+  <div class="col-12 col-md-6 col-lg-6 mt-3 form-new-event">
+    <form class="" action="/events/{{event.id}}/update" method="post" enctype="multipart/form-data">
+      <div>
+        <h2 class=""><i class='fa fa-quote-left'></i> Nombre del evento</h2>
+        <p>Elige un nombre para tu evento y cuéntales a los asistentes por qué crees que lo van a pasar genial. Añade detalles que destaquen por qué tu evento es único.</p>
+      </div>
+      
+      <div class="mb-1">
+        <input type="text" name="title" value="{{event.title}}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Nombre del evento"/>
+        {{#if errors.title }}<div class="invalid-feedback">{{ errors.title }}</div>{{/if}}
+      </div>
+      <hr>
+
+
+
+      <h2 class="mb-2"><i class="fa fa-align-left"></i> Descripción</h2>
+      <p>Escribe un breve resumen del evento para animar a los asistentes</p>
+      <div class="mb-1">
+        <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description"  aria-label="Event description" >{{ event.description}} </textarea>
+        {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
+      </div>
+      <hr>
+
+
+
+      <h2 class="mb-2"><i class='fa fa-calendar'></i> Fecha y hora</h2>
+      <p>Informa a los asistentes cuándo empieza y termina el evento para que puedan organizarse.
+        {{prettyYear event.startDate }}-{{prettyZero event.startDate}}-{{prettyDay event.startDate }}T{{prettyZeroHours event.startDate}}:{{prettyZeroMinutes event.startDate}}
+      </p>
+      <div class="date-time">
+       <div class="mb-1 date-time-element">
+        <label for="" style="font-size: 10px" >El evento comienza:</label> 
+        <input type="datetime-local" name="startDate" value="{{prettyYear event.startDate }}-{{prettyZero event.startDate}}-{{prettyDay event.startDate }}T{{prettyZeroHours event.startDate}}:{{prettyZeroMinutes event.startDate}}" class="form-control {{#if errors.startDate }}is-invalid{{/if}}"/>
+          {{#if errors.startDate }}<div class="invalid-feedback">{{ errors.startDate }}</div>{{/if}}
+        </div>
+      <div class="mb-1 date-time-element">
+      <label for="" style="font-size: 10px" >El evento termina:</label> 
+      <input type="datetime-local" name="endDate" value="{{prettyYear event.endDate }}-{{prettyZero event.endDate}}-{{prettyDay event.endDate }}T{{prettyZeroHours event.endDate}}:{{prettyZeroMinutes event.endDate}}" class="form-control {{#if errors.endDate }}is-invalid{{/if}}"/>
+        {{#if errors.endDate }}<div class="invalid-feedback">{{ errors.endDate }}</div>{{/if}}
+      </div>
+      </div>
+      <hr>
+      
+  
+
+      <h2 class="mb-2"><i class='fa fa-photo'></i> Imagen de evento principal</h2>
+      <p>Esta es la primera imagen que los asistentes verán en la parte superior de tu página del evento</p>
+      <div class="mb-1">
+        <input type="file" name="image" value="{{ event.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+          placeholder="Enter event image url..." />
+        {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+      </div>
+      <hr>
+
+
+
+      <h2 class="mb-2"><i class="fa fa-ticket"></i> Añade entradas</h2>
+      <div class="cost-tickets">
+        <select name="ticket-cost" id="id-ticket-cost" multiple>
+          <option value="1">Gratis</option>
+          <option value="2">Pago</option>
+        </select>
+        {{!-- <button type="button" class="btn btnsecondary mb-3">Gratis</button>
+        <button type="button" class="btn btnsecondary mb-3">Pago</button> --}}
+      </div>
+      <div class="mb-3 price">
+        <input type="text" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
+        {{#if errors.price }}<div class="invalid-feedback">{{ errors.price }}</div>{{/if}}
+      </div>
+      
+      <div class="mb-1">
+        <input type="number" name="availability" value="{{ event.availability }}" class="form-control {{#if errors.availability }}is-invalid{{/if}}" placeholder="Capacidad de asistentes al evento" />
+        {{#if errors.availability }}<div class="invalid-feedback">{{ errors.availability }}</div>{{/if}}
+      </div>
+      <hr>
+
+
+
+      <h2 class="mb-2"><i class="fa fa-map"></i> Ubicación</h2>
+      <div class="">
+        <select name="location-selection" id="id-location-selection" multiple>
+          <option value="1">Online</option>
+          <option value="2">Localización</option>
+        </select>
+        {{!-- <button type="button" class="btn btnsecondary mb-3">Online</button>
+        <button type="button" class="btn btnsecondary mb-3">Localización</button> --}}
+      </div>
+      
+      <div>
+        <button type="submit" class="btn btn-primary mb-3 btn-new-event">Publicar cambios</button>
+      </div>
+    </form>
+  </div>
+</div>
+</section>

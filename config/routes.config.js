@@ -12,9 +12,9 @@ router.get("/events/:id", events.detail);
 router.post("/events", upload.single('image'), secure.isAuthenticated,events.create);
 router.post("/events/:id/delete", secure.isAuthenticated, events.delete);
 
-//Update para despues:
-// router.get("/events/:id/update", secure.isAuthenticated, events.update);
-// router.post("/events/:id/update", secure.isAuthenticated, events.doUpdate)
+
+router.get("/events/:id/update", secure.isAuthenticated, events.update);
+router.post("/events/:id/update", secure.isAuthenticated, events.doUpdate)
 
 router.get("/register", auth.register);
 router.post('/register', auth.doRegister);
