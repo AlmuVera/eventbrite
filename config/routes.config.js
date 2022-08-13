@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const upload =require ('../config/multer.config')
 
 const { events, auth, users } = require("../controllers");
 const secure = require("../middlewares/secure.mid");
 
+router.get("/", events.list);
 router.get("/events", events.list);
 router.get("/events/new", secure.isAuthenticated, events.new);
 router.get("/events/:id", events.detail);
-router.post("/events", secure.isAuthenticated,events.create);
+router.post("/events", upload.single('image'), secure.isAuthenticated,events.create);
 router.post("/events/:id/delete", secure.isAuthenticated, events.delete);
 
 //Update para despues:

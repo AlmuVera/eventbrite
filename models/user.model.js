@@ -29,10 +29,10 @@ const userSchema = new Schema({
         required: "La contraseña debe tener un mínimo de 8 caracteres",
         match: [PW_PATTERN, "La contraseña debe tener un mínimo de 8 caracteres"],
       },
-      tickets: {
+      tickets: [{
         type: Schema.Types.ObjectId,
         ref: "Event",
-      },
+      }],
      
  }
 )

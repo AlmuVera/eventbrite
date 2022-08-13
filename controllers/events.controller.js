@@ -17,6 +17,8 @@ module.exports.detail = (req, res, next) => {
 };
 
 module.exports.new = (req, res, next) => {
+  console.log("daniiii")
+  console.log(process.env.CLOUDINARY_KEY)
     res.render("events/new");
 };
 
@@ -25,7 +27,15 @@ module.exports.create = (req, res, next) => {
     ...req.body,
     author: req.user.id,
   };
-    
+ 
+    if ( req.file) {
+      event.image = req.file.path
+      //el path viene de cloudinary
+    } else {
+      event.image = "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png" 
+    }
+    console.log(req.file)
+
     // return res.json(req.body)
 
     Event.create(event)
@@ -51,7 +61,7 @@ module.exports.delete = (req, res, next) => {
       if(res.locals.currentUser._id.equals(event.author._id)){
         console.log("event")
         Event.findByIdAndRemove(req.params.id)
-      .then(() => console.log("yuhuuuuuuuuu"))
+      .then(() => console.log("evento borrado"))
       }
       res.redirect("/users/list")}
     )
@@ -77,3 +87,4 @@ module.exports.buyticketconfirmation = (req, res, next) => {
 };
 
 // res.locals.currentUser = user;
+

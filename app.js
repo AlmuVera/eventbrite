@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const logger = require("morgan");//DUDA: why we installed morgan?
 const createError = require("http-errors");

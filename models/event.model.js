@@ -10,19 +10,19 @@ const eventSchema = new Schema({
   },
   image: {
     type: String,
-    default:
-      "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png",
-    validate: {
-      validator: function (image) {
-        try {
-          new URL(image);
-          return true;
-        } catch (error) {
-          return false;
-        }
-      },
-      message: (image) => `URL no válida`,
-    },
+    // default:
+    //   "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png",
+    // validate: {
+    //   validator: function (image) {
+    //     try {
+    //       new URL(image);
+    //       return true;
+    //     } catch (error) {
+    //       return false;
+    //     }
+    //   },
+    //   message: (image) => `URL no válida`,
+    // },
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -50,9 +50,6 @@ const eventSchema = new Schema({
     default: Date.now,
   },
 
-
-
-//
   location: {
     type: {
       type: String,

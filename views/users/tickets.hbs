@@ -1,5 +1,7 @@
 <h1>Entradas</h1>
 <hr/>
-<p>{{user.tickets}}</p>
+{{#each user.tickets}}
+<p>{{title}}</p>
+<img src={{image}} />
+{{/each}}
 <p></p>
-

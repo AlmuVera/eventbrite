@@ -3,11 +3,11 @@
   <div>
     <a class="links-btn" href="/events">
       <i class="fa fa-angle-left"></i>
-        Eventos
+      Eventos
     </a>
   </div>
   <div class="col-12 col-md-6 col-lg-6 mt-3 form-new-event">
-    <form class="" action="/events" method="post">
+    <form class="" action="/events" method="post" enctype="multipart/form-data">
       <div>
         <h2 class=""><i class='fa fa-quote-left'></i> Nombre del evento</h2>
         <p>Elige un nombre para tu evento y cuéntales a los asistentes por qué crees que lo van a pasar genial. Añade detalles que destaquen por qué tu evento es único.</p>
@@ -19,6 +19,8 @@
       </div>
       <hr>
 
+
+
       <h2 class="mb-2"><i class="fa fa-align-left"></i> Descripción</h2>
       <p>Escribe un breve resumen del evento para animar a los asistentes</p>
       <div class="mb-1">
@@ -26,6 +28,8 @@
         {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
       </div>
       <hr>
+
+
 
       <h2 class="mb-2"><i class='fa fa-calendar'></i> Fecha y hora</h2>
       <p>Informa a los asistentes cuándo empieza y termina el evento para que puedan organizarse.</p>
@@ -48,11 +52,13 @@
       <h2 class="mb-2"><i class='fa fa-photo'></i> Imagen de evento principal</h2>
       <p>Esta es la primera imagen que los asistentes verán en la parte superior de tu página del evento</p>
       <div class="mb-1">
-        <input type="text" name="image" value="{{ event.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+        <input type="file" name="image" value="{{ event.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
           placeholder="Enter event image url..." />
         {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
       </div>
       <hr>
+
+
 
       <h2 class="mb-2"><i class="fa fa-ticket"></i> Añade entradas</h2>
       <div class="cost-tickets">
@@ -69,10 +75,12 @@
       </div>
       
       <div class="mb-1">
-        <input type="number" name="availability" value="{{ event.availability }}" class="form-control {{#if errors.availability }}is-invalid{{/if}}" placeholder="Número de entradas" />
+        <input type="number" name="availability" value="{{ event.availability }}" class="form-control {{#if errors.availability }}is-invalid{{/if}}" placeholder="Capacidad de asistentes al evento" />
         {{#if errors.availability }}<div class="invalid-feedback">{{ errors.availability }}</div>{{/if}}
       </div>
       <hr>
+
+
 
       <h2 class="mb-2"><i class="fa fa-map"></i> Ubicación</h2>
       <div class="">
