@@ -36,7 +36,7 @@ const eventSchema = new Schema({
   },
 
   price: {
-    type: Number,
+    type: String,
     min: 0,
     required: "",
   },

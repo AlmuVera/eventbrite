@@ -14,7 +14,7 @@
       </div>
       
       <div class="mb-1">
-        <input type="text" name="title" value="{{ event.title }}" class="form-control {{#if errors.title }}is-invalid{{/if}}" />
+        <input type="text" name="title" value="{{ event.title }}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Nombre del evento"/>
         {{#if errors.title }}<div class="invalid-feedback">{{ errors.title }}</div>{{/if}}
       </div>
       <hr>
@@ -54,20 +54,38 @@
       </div>
       <hr>
 
-      <div class="mb-1">
-        <input type="number" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
+      <h2 class="mb-2"><i class="fa fa-ticket"></i> Añade entradas</h2>
+      <div class="cost-tickets">
+        <select name="ticket-cost" id="id-ticket-cost" multiple>
+          <option value="1">Gratis</option>
+          <option value="2">Pago</option>
+        </select>
+        {{!-- <button type="button" class="btn btnsecondary mb-3">Gratis</button>
+        <button type="button" class="btn btnsecondary mb-3">Pago</button> --}}
+      </div>
+      <div class="mb-3 price">
+        <input type="text" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
         {{#if errors.price }}<div class="invalid-feedback">{{ errors.price }}</div>{{/if}}
       </div>
-      <hr>
-   
-
+      
       <div class="mb-1">
         <input type="number" name="availability" value="{{ event.availability }}" class="form-control {{#if errors.availability }}is-invalid{{/if}}" placeholder="Número de entradas" />
         {{#if errors.availability }}<div class="invalid-feedback">{{ errors.availability }}</div>{{/if}}
       </div>
+      <hr>
+
+      <h2 class="mb-2"><i class="fa fa-map"></i> Ubicación</h2>
+      <div class="">
+        <select name="location-selection" id="id-location-selection" multiple>
+          <option value="1">Online</option>
+          <option value="2">Localización</option>
+        </select>
+        {{!-- <button type="button" class="btn btnsecondary mb-3">Online</button>
+        <button type="button" class="btn btnsecondary mb-3">Localización</button> --}}
+      </div>
       
       <div>
-        <button type="submit" class="btn btn-primary mb-3 btn-new-event">Crear evento</button>
+        <button type="submit" class="btn btn-primary mb-3 btn-new-event">Publicar</button>
       </div>
     </form>
   </div>
