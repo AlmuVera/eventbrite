@@ -1,10 +1,13 @@
 <div class="col-xl-4 col-lg-4 col-md-12">
   <div class="d-grid">
+    <P>Te has registrado en el evento <strong>{{event.title}}</strong> {{prettyDate event.startDate}}</P>
     {{! <button class="btn btn-primary" type="submit">Registrar</button> }}
     <form action="/events/{{event.id}}/buyticket" method="post">
-      <button class="btn btn-primary" type="submit">Take your
-        ticket!!!!!!!oneoneone</button>
+        <a href="" class="btn btn-primary"style="width:100%;">Guarda tu entrada este es</a>
+      {{!-- <button class="btn btn-primary" style="width:100%;" type="submit">Guarda tu entrada</button> --}}
     </form>
   </div>
 </div>
+
+
 

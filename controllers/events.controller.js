@@ -110,12 +110,12 @@ module.exports.delete = (req, res, next) => {
     .populate("author")
     .then((event) => {
       if (res.locals.currentUser._id.equals(event.author._id)) {
-        console.log("event");
         Event.findByIdAndRemove(req.params.id).then(() =>
           console.log("evento borrado")
         );
       }
       res.redirect("/users/list");
+      
     })
     .catch((error) => next(error));
 };
@@ -131,6 +131,7 @@ module.exports.buyticket = (req, res, next) => {
     })
     .catch((error) => next(error));
 };
+//revisar esto:
 
 module.exports.buyticketconfirmation = (req, res, next) => {
   Event.findById(req.params.id)

@@ -12,7 +12,7 @@
       <p>{{prettyDay event.startDate}}</p>
       
       
-      <h2>{{event.title}}</h2>
+      <h4>{{event.title}}</h>
       <p>{{event.price}}</p>
     </div>
   </div>
@@ -38,7 +38,8 @@
   </div>
   <div class="row info-event" style="border:1px solid #ddd">
     <div class="col-sm-8">
-      <p>{{lowerCase event.title}}</p>
+      <h6>{{lowerCase event.title}}</h6>
+      <br>
       <h5>Acerca de este evento</h5>
       <p>{{event.description}}</p>
 
@@ -82,5 +83,6 @@
   </form>
   </div>
 </div>
+
 {{/if}}
 
