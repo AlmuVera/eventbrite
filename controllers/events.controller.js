@@ -29,10 +29,19 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
+  const { lat, lng } = req.body;
   const event = {
     ...req.body,
     author: req.user.id,
   };
+  if (lat && lng) {
+    event.location = {
+      type: 'Point',
+      coordinates: [lng, lat]
+    }
+  }
+
+  //else? online?
 
   if (req.file) {
     event.image = req.file.path;
@@ -104,6 +113,10 @@ module.exports.doUpdate = (req, res, next) => {
     })
     .catch((error) => next(error));
 };
+
+
+
+
 
 module.exports.delete = (req, res, next) => {
   Event.findById(req.params.id)

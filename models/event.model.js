@@ -49,18 +49,28 @@ const eventSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-
+  address: String,
   location: {
     type: {
-      type: String,
-      enum: ["Point"],
-      //required: true
+      type: String, 
+      enum: ['Point'],
     },
     coordinates: {
       type: [Number],
-      //required: true,
-    },
+    }
   },
+  
+  // location: {
+  //   type: {
+  //     type: String,
+  //     enum: ["Point"],
+  //     //required: true
+  //   },
+  //   coordinates: {
+  //     type: [Number],
+  //     //required: true,
+  //   },
+  // },
   availability: {
     type: Number,
     required: "Es necesario indicar la capacidad de asistentes al evento",
@@ -80,6 +90,8 @@ eventSchema.pre("validate", function (next) {
   this.image = this.image || undefined;
   next();
 });
+
+eventSchema.index({ location: '2dsphere' }); //sin esta linea no funcionarian las querys geolocalizacion
 
 const Event = mongoose.model("Event", eventSchema);
 

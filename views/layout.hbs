@@ -25,7 +25,10 @@
     </div>
     {{> footer}}
 
-
+    <script src="/js/g-places.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ googleApiKey }}&libraries=places&callback=initGooglePlaces"></script>
+    {{!-- a;adir despues de places con coma delante las librerias que se quieren utilizr, ahora mismo solo places luego maps javascript api --}}
   
+
   </body>
 </html>

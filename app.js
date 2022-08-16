@@ -20,6 +20,18 @@ const { session, loadUser} = require("./config/session.config");
 app.use(session);
 app.use(loadUser);
 
+
+app.use((req, res, next) => {
+    //necesito esto ?
+    // const path = req.path;
+    // res.locals.title = path;
+    // antes de day 3 modulo2 week 6 buscar en todo list
+    //
+    res.locals.googleApiKey = process.env.GOOGLE_API_KEY;
+    res.locals.query = req.query //hace que la info de la query de los GET quede disponible en un subobjeto que se llama query para todas las vistas
+    next();
+})
+
 // Router configuration
 const routes = require("./config/routes.config");
 app.use("/", routes);

@@ -90,7 +90,12 @@
         </select>
         {{!-- <button type="button" class="btn btnsecondary mb-3">Online</button>
         <button type="button" class="btn btnsecondary mb-3">Localización</button> --}}
+        <input type="text" name="address" value="{{ event.address }}" class="form-control g-places-finder {{#if errors.address }}is-invalid{{/if}}"
+          placeholder="Busca una dirección" />
+        {{#if errors.address }}<div class="invalid-feedback">{{ errors.address }}</div>{{/if}}
       </div>
+      <input type="hidden" name="lat" value="{{ event.lat }}" />
+      <input type="hidden" name="lng" value="{{ event.lng }}" />
       
       <div>
         <button type="submit" class="btn btn-primary mb-3 btn-new-event">Publicar</button>
@@ -99,3 +104,5 @@
   </div>
 </div>
 </section>
+
+
