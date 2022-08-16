@@ -2,7 +2,22 @@ const mongoose = require("mongoose");
 const { User, Event } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  Event.find()
+  const { lat, lng, title } = req.query;
+  const criterial = {};
+
+  if (lat && lng) {
+    criterial.location = {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: [lng, lat]
+       },
+       $maxDistance: 10000 //10km
+     }
+   }
+  }
+
+  Event.find(criterial)
     .populate("author")
     .then((events) => {
       res.render("events/list", { events });

@@ -29,6 +29,7 @@ app.use((req, res, next) => {
     //
     res.locals.googleApiKey = process.env.GOOGLE_API_KEY;
     res.locals.query = req.query //hace que la info de la query de los GET quede disponible en un subobjeto que se llama query para todas las vistas
+    
     next();
 })
 

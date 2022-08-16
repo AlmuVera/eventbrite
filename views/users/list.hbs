@@ -22,6 +22,13 @@
       <a href="/events/{{event.id}}/update" class="btn btn-primary"style="width:100%;">Editar</a>
       {{!-- <a href="/events/{{event.id}}/update">Editar/borrar</a>    --}}
     </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12">
+        <form action="/events/{{event.id}}/delete" method="post">
+          <button class="btn btn-primary delete" type="submit">Eliminar evento</button>
+        </form>
+      </div>
+    </div>
     
   </div>
 </div>

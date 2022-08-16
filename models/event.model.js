@@ -91,8 +91,8 @@ eventSchema.pre("validate", function (next) {
   next();
 });
 
-eventSchema.index({ location: '2dsphere' }); //sin esta linea no funcionarian las querys geolocalizacion
-
+// eventSchema.index({ location: '2dsphere' }); //sin esta linea no funcionan las querys geolocalizacion
+eventSchema.index({ location: '2dsphere' });
 const Event = mongoose.model("Event", eventSchema);
 
 module.exports = Event;
