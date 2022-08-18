@@ -15,6 +15,27 @@ hbs.registerHelper("prettyZeroMinutes", (date) => addZero(date.getMinutes()));
 
 hbs.registerHelper("lowerCase", (title) => title?.toLowerCase());
 
+  
+hbs.registerHelper('markers', function(events) {
+const markers = events.reduce((markers, event) => {
+if (event.location?.coordinates) {
+const [lng, lat] = event.location?.coordinates;
+markers.push({ lng, lat, title: event.title })
+}
+return markers;
+}, []);
+return new hbs.SafeString(`<script>const gMarkers = ${JSON.stringify(markers)}</script>`);
+
+})
+
+hbs.registerHelper('hasLocation', function(event, options) {
+    if (event.location?.coordinates) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+
 
 //Para crear opcion de si el precio es 0 aparezca que es gratis y usarlo en detalle y en lista.how to do it?
 

@@ -490,10 +490,14 @@ svg:hover{
 .location-event{
     text-align: center;
 }
-.google.map{
-    /* width: 100%;
-    height: 230px; */
-}
+/* .google.map{
+    width: 100%;
+    height: 230px;
+} */
+.g-map {
+    height: 500px;
+    width: 100%;
+  }
 
 /* footer */
 

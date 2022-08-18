@@ -50,7 +50,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><path id="calendar-fill_svg__24_small_calendar_fill-a" d="M14 0h1v2h5v4H0V2h5V0h1v2h8V0zM0 20V7h20v13H0zm13-10v2h2v-2h-2zm-4 0v2h2v-2H9zm-4 0v2h2v-2H5zm8 4v2h2v-2h-2zm-4 0v2h2v-2H9zm-4 0v2h2v-2H5z"/></defs><g fill="none" fill-rule="evenodd" transform="translate(2 2)"><mask id="calendar-fill_svg__24_small_calendar_fill-b" fill="#fff"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar-fill_svg__24_small_calendar_fill-a"/></mask><use fill="#45494E" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar-fill_svg__24_small_calendar_fill-a"/><g mask="url(#calendar-fill_svg__24_small_calendar_fill-b)"><path fill="#000" d="M-2-2h24v24H-2z"/></g></g></svg>
           <span>Fecha y hora</span>
           <div class="start-end-event"> 
-            <p>{{prettyDate event.startDate}}, {{prettyHour event.startDate}}:{{prettyMinutes event.startDate}} - </p>
+            <p> {{prettyDate event.startDate}}, {{prettyHour event.startDate}}:{{prettyMinutes event.startDate}}</p>
             <p>{{prettyDate event.endDate}}, {{prettyHour event.endDate}}:{{prettyMinutes event.endDate}}</p>
           </div>
           
@@ -60,16 +60,24 @@
           <span>Ubicación</span>
           <br>
           <div class="location-event">
-            <a href="" style="font-size: 14px;">ver mapa</a>
+            {{#hasLocation event}}
+              <a href="http://maps.google.com/maps?q={{event.location.coordinates.[1]}},{{event.location.coordinates.[0]}}" target="_blank" style="font-size: 14px;">ver mapa</a>
+            {{/hasLocation}}
+            
           </div>  
         </div> 
       </span>
     </div>
   </div>
   <div class="row " style="border:1px solid #ddd">
-    <div class="col-sm-12 google-map">
-      AQUI VA EL MAPA
-
+    <div class="col-12">
+      {{#hasLocation event}}
+        
+      {{/hasLocation}}
+      <div class="g-map">
+        
+        AQUI VA EL MAPA
+      </div>
     </div>
 
   </div>
