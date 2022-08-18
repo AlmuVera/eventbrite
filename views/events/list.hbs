@@ -2,23 +2,6 @@
 {{> headerlist}}
 
  <div class='wrapper'>
-
-    {{!-- <div class="events-location">
-        <h2>Eventos populares en</h2>
-        <h2><i class="fa fa-angle-down"></i> 
-            <form action="/events" method="GET">
-                <div class="input-group mb-3">
-                    <input type="text" name="address" value="{{ query.address }}" class="g-places-finder input-no-borders no-outline" placeholder="ELIGE UNA UBICACIÓN">
-                    <button class="btn input-no-borders no-outline" type="submit"><i class="fa fa-search"></i></button>
-                </div>
-
-                <input type="hidden" name="lat" value="{{ query.lat }}" />
-                <input type="hidden" name="lng" value="{{ query.lng }}" />
-            </form>
-        </h2>
-
-    </div> --}}
-
     <div class="events-location">
         <form action="/events" method="GET">
             <div class="input-group mb-3">
@@ -38,11 +21,11 @@
     </div>
   {{!-- //map and markers of all events work here but not on detail event   --}}
 <div class="row " style="border:1px solid #ddd">
-    <div class="col-12">
+    <div class="col-12 no-padding">
       {{markers events}}
       <div class="g-map">
         
-        AQUI VA EL MAPA
+        AQUI VA EL MAPA DEL EVENTO
       </div>
     </div>
 
@@ -56,9 +39,6 @@
             <li><button id="linkFree">Gratis</button></li>
         </ul>
     </nav>
-    {{!-- <div class="header">
-        <h2>Eventos populares</h2>
-    </div> --}}
         
     <div class="cards-wrap" "all">
          {{#each events as |event|}}

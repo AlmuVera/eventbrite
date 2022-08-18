@@ -1,10 +1,10 @@
 
-<div>
+<div class="link-list-events">
   <a class="links-btn" href="/events"> Eventos</a>
 </div>
 <div class="container-fluid">
   <div class="row header-container">
-    <div class="col-xl-8 col-lg-8 col-md-12 header-img-size" style="border:1px solid #ddd">
+    <div class="col-xl-8 col-lg-8 col-md-12 header-img-size no-padding" style="border:1px solid #ddd">
       <img src="{{event.image}}" alt="{{event.title}} image" class="header-img">
     </div>
     <div class="col-xl-4 col-lg-4 col-md-12 header-info" style="border:1px solid #ddd">
@@ -12,12 +12,13 @@
       <p>{{prettyDay event.startDate}}</p>
       
       
-      <h4>{{event.title}}</h>
+      <h5 class="name-event">{{event.title}}</h5>
+      <p>por <span class="organizer">{{event.author.name}}</span></p>
       <p>{{event.price}}</p>
     </div>
   </div>
   <div class="row bar-register">
-    <div class="col-12" style="border:1px solid #ddd">
+    <div class="col-12">
       <div class="row">
       
         <div class="col-xl-4 col-lg-4 col-md-12">
@@ -26,19 +27,19 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-0"></div>
         <div class="col-xl-4 col-lg-4 col-md-12">
-          <div class="d-grid">
-            <button class="btn btn-primary" type="submit">Registrar</button>
-          <form action="/events/{{event.id}}/buyticket" method="post">
-    <button class="btn btn-primary " type="submit">Registrar</button>
-</form>
+          <div class="d-grid col-3" >
+            {{!-- <button class="btn btn-primary" type="submit">Registrar</button> --}}
+            <form action="/events/{{event.id}}/buyticket" method="post">
+              <button class="btn btn-primary"style="width:350px;" type="submit">Registrar</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row info-event" style="border:1px solid #ddd">
-    <div class="col-sm-8">
-      <h6>{{lowerCase event.title}}</h6>
+    <div class="col-sm-8 mt-4">
+      {{!-- <h6>{{lowerCase event.title}}</h6> --}}
       <br>
       <h5>Acerca de este evento</h5>
       <p>{{event.description}}</p>
@@ -60,6 +61,8 @@
           <span>Ubicación</span>
           <br>
           <div class="location-event">
+            {{event.address}}
+            <br>
             {{#hasLocation event}}
               <a href="http://maps.google.com/maps?q={{event.location.coordinates.[1]}},{{event.location.coordinates.[0]}}" target="_blank" style="font-size: 14px;">ver mapa</a>
             {{/hasLocation}}
@@ -70,7 +73,7 @@
     </div>
   </div>
   <div class="row " style="border:1px solid #ddd">
-    <div class="col-12">
+    <div class="col-12 no-padding">
       {{#hasLocation event}}
         
       {{/hasLocation}}

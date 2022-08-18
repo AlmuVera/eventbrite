@@ -15,20 +15,23 @@
       <div class="card-body -fluid">
         <h5 class="card-title">{{event.title}}</h5>
         <p class="card-text"><small class="text-muted">{{prettyDate startDate}} - {{prettyZeroHours startDate}}:{{prettyZeroMinutes startDate}}H</small></p>
-        <p class="card-text">{{event.location}}</p>
+        <p class="card-text">{{event.address}}</p>
       </div>
     </div>
     <div class="col-md-3 m-3">
       <a href="/events/{{event.id}}/update" class="btn btn-primary"style="width:100%;">Editar</a>
       {{!-- <a href="/events/{{event.id}}/update">Editar/borrar</a>    --}}
+      <form action="/events/{{event.id}}/delete" method="post">
+          <button class="btn btn-primary delete" type="submit">Eliminar evento</button>
+        </form>
     </div>
-    <div class="row">
+    {{!-- <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-12">
         <form action="/events/{{event.id}}/delete" method="post">
           <button class="btn btn-primary delete" type="submit">Eliminar evento</button>
         </form>
       </div>
-    </div>
+    </div> --}}
     
   </div>
 </div>
