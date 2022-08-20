@@ -16,6 +16,9 @@ module.exports.list = (req, res, next) => {
      }
    }
   }
+  if (title) {
+   criterial.title = new RegExp(title, 'i'); 
+  }
 
   Event.find(criterial)
     .populate("author")
