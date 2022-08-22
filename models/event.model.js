@@ -59,27 +59,11 @@ const eventSchema = new Schema({
       type: [Number],
     }
   },
-  
-  // location: {
-  //   type: {
-  //     type: String,
-  //     enum: ["Point"],
-  //     //required: true
-  //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     //required: true,
-  //   },
-  // },
+ 
   availability: {
     type: Number,
     required: "Es necesario indicar la capacidad de asistentes al evento",
   },
-
-
-  //   organizer: String,(el mismo que el user que crea el evento)
-
-  //
 
   //   ticketStatus: String, //sold out or available
 },

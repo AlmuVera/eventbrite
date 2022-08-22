@@ -125,8 +125,7 @@ module.exports.doUpdate = (req, res, next) => {
         },
         { new: true }
       ).then((event) => {
-        console.log(event);
-        res.render("users/list", { event, eventIsOwner });
+        res.redirect("/users/list");
       });
     })
     .catch((error) => next(error));
@@ -157,7 +156,7 @@ module.exports.buyticket = (req, res, next) => {
     { $addToSet: { tickets: req.params.id } }
   )
     .then((result) => {
-      // console.log(`result of operation: ${result}`)
+   
       res.render("users/tickets");
     })
     .catch((error) => next(error));
@@ -170,4 +169,4 @@ module.exports.buyticketconfirmation = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-// res.locals.currentUser = user;
+
