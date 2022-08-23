@@ -111,7 +111,7 @@ module.exports.update = (req, res, next) => {
       return eventdata;
     })
     .then((event) => {
-      res.redirect("/users/list", { event, eventIsOwner });
+      res.render("users/list", { event, eventIsOwner });
     })
     .catch((error) => next(error));
 };
