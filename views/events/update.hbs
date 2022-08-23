@@ -35,7 +35,7 @@
 
       <h2 class="mb-2"><i class='fa fa-calendar'></i> Fecha y hora</h2>
       <p>Informa a los asistentes cuándo empieza y termina el evento para que puedan organizarse.
-        {{prettyYear event.startDate }}-{{prettyZero event.startDate}}-{{prettyDay event.startDate }}T{{prettyZeroHours event.startDate}}:{{prettyZeroMinutes event.startDate}}
+        
       </p>
       <div class="date-time">
        <div class="mb-1 date-time-element">
@@ -67,14 +67,18 @@
       <h2 class="mb-2"><i class="fa fa-ticket"></i> Añade entradas</h2>
       <div class="cost-tickets">
         <select name="ticket-cost" id="id-ticket-cost" multiple>
+          {{#if event.price}}
           <option value="1">Gratis</option>
+          <option value="2" selected>Pago</option>
+          {{else}}
+          <option value="1" selected>Gratis</option>
           <option value="2">Pago</option>
+          {{/if}}
         </select>
-        {{!-- <button type="button" class="btn btnsecondary mb-3">Gratis</button>
-        <button type="button" class="btn btnsecondary mb-3">Pago</button> --}}
+       
       </div>
-      <div class="mb-3 price">
-        <input type="text" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
+      <div class="mb-3 price {{#unless event.price}}hidden{{/unless}}" id="new-gratis">
+        <input type="text" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" value="{{event.price}}" />
         {{#if errors.price }}<div class="invalid-feedback">{{ errors.price }}</div>{{/if}}
       </div>
       
@@ -89,12 +93,22 @@
       <h2 class="mb-2"><i class="fa fa-map"></i> Ubicación</h2>
       <div class="">
         <select name="location-selection" id="id-location-selection" multiple>
+          {{#if event.address}}
           <option value="1">Online</option>
+          <option value="2" selected>Localización</option>
+          {{else}}
+          <option value="1" selected>Online</option>
           <option value="2">Localización</option>
+          {{/if}}
         </select>
         {{!-- <button type="button" class="btn btnsecondary mb-3">Online</button>
         <button type="button" class="btn btnsecondary mb-3">Localización</button> --}}
+      <input type="text" name="address" value="{{ event.address }}" id="new-address" class="form-control g-places-finder {{#unless event.address}}hidden{{/unless}} {{#if errors.address }}is-invalid{{/if}}"
+          placeholder="Busca una dirección" />
+        {{#if errors.address }}<div class="invalid-feedback">{{ errors.address }}</div>{{/if}}
       </div>
+      <input type="hidden" name="lat" value="{{ event.lat }}" />
+      <input type="hidden" name="lng" value="{{ event.lng }}" />
       
       <div>
         <button type="submit" class="btn btn-primary mb-3 btn-new-event">Publicar cambios</button>

@@ -66,10 +66,9 @@
           <option value="1">Gratis</option>
           <option value="2">Pago</option>
         </select>
-        {{!-- <button type="button" class="btn btnsecondary mb-3">Gratis</button>
-        <button type="button" class="btn btnsecondary mb-3">Pago</button> --}}
+       
       </div>
-      <div class="mb-3 price" id="new-gratis">
+      <div class="mb-3 price {{#unless event.price}}hidden{{/unless}}" id="new-gratis">
         <input type="text" name="price" value="{{ event.price }}" class="form-control {{#if errors.price }}is-invalid{{/if}}" placeholder="Precio" />
         {{#if errors.price }}<div class="invalid-feedback">{{ errors.price }}</div>{{/if}}
       </div>
@@ -88,7 +87,7 @@
         </select>
         {{!-- <button type="button" class="btn btnsecondary mb-3">Online</button>
         <button type="button" class="btn btnsecondary mb-3">Localización</button> --}}
-        <input type="text" name="address" value="{{ event.address }}" id="new-address" class="form-control g-places-finder {{#if errors.address }}is-invalid{{/if}}"
+        <input type="text" name="address" value="{{ event.address }}" id="new-address" class="form-control g-places-finder {{#unless event.address}}hidden{{/unless}} {{#if errors.address }}is-invalid{{/if}}"
           placeholder="Busca una dirección" />
         {{#if errors.address }}<div class="invalid-feedback">{{ errors.address }}</div>{{/if}}
       </div>
