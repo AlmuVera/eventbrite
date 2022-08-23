@@ -4,7 +4,8 @@ hbs.registerPartials(__dirname + "/../views/partials");
 let addZero = (el) => (el.toString().length == 1 ? "0" : "") + el.toString();
 
 hbs.registerHelper("prettyDate", (date) => date?.toDateString());
-hbs.registerHelper("prettyMonth", (date) => date?.getMonth() + 1);
+// hbs.registerHelper("prettyMonth", (date) => date?.getMonth() + 1);
+hbs.registerHelper("prettyMonth", (date) => date?.toLocaleString('default', { month: 'short' }));
 hbs.registerHelper("prettyDay", (date) => date?.getDate());
 hbs.registerHelper("prettyHour", (date) => date?.getHours());
 hbs.registerHelper("prettyMinutes", (date) => date?.getMinutes());

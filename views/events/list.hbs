@@ -37,10 +37,11 @@
   
 
     <nav class="nav-home">
+        
         <ul>
-            <li><button id="linkAll">Todos</button></li>
-            <li><button id="linkOnline">Online</button></li>
-            <li><button id="linkFree">Gratis</button></li>
+            <li> <a href="/events"><button id="linkAll">Todos</button></a></li>
+            <li><a href="/events?online"><button id="linkOnline">Online</button></a></li>
+            <li><a href="/events?gratis"><button id="linkFree">Gratis</button></a></li>
         </ul>
     </nav>
         
@@ -61,7 +62,12 @@
                     </div>
                     <div class="card-date">{{prettyDate event.startDate}}, {{prettyHour event.startDate}}:{{prettyMinutes event.startDate}} </div>
                     <div> 
-                        <p class="card-location">{{event.address}}</p>
+                        {{#if event.address }}
+                         <p class="card-location">{{event.address}}</p>
+                        {{else}}
+                         <p class="card-location">ONLINE</p>
+                        {{/if}}
+                        
                     </div>
                     <div>
                         {{!-- crear helper hbs para que si es free salga gratis si es cantidad agregue 2 decimales y el EUR delante --}}
@@ -69,7 +75,7 @@
                         {{#if event.price }}
                          <p class="card-price">EUR {{event.price}}.00</p>
                         {{else}}
-                         <p>GRATIS</p>
+                         <p class="card-price">GRATIS</p>
                         {{/if}}
                     </div>
                     <div>

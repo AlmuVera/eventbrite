@@ -261,6 +261,9 @@ input.register{
 .wrapper{
     padding-top:50px;
 }
+.nav-home{
+    height: 80px;
+}
 .wrapper .nav-home li{
     display: inline-block;
     padding: 20px 50px;

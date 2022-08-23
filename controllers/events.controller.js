@@ -4,8 +4,10 @@ const { sendRegistrationEvent } = require("../config/mailer.config");
 const { tickets } = require("./users.controller");
 
 module.exports.list = (req, res, next) => {
-  const { lat, lng, title } = req.query;
+  console.log(req.query)
+  const { lat, lng, title, online, gratis } = req.query;
   const criterial = {};
+  
 
   if (lat && lng) {
     criterial.location = {
@@ -20,6 +22,14 @@ module.exports.list = (req, res, next) => {
   }
   if (title) {
     criterial.title = new RegExp(title, "i");
+  }
+
+  if (online === '') {
+    criterial.address = ''
+  }
+
+  if (gratis === '') {
+    criterial.price = ''
   }
 
   Event.find(criterial)
