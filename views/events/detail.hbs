@@ -8,12 +8,12 @@
       <img src="{{event.image}}" alt="{{event.title}} image" class="header-img">
     </div>
     <div class="col-xl-4 col-lg-4 col-md-12 header-info" style="border:1px solid #ddd">
-      <p>{{prettyMonth event.startDate}}</p>
-      <p>{{prettyDay event.startDate}}</p>
+      <p style="margin-bottom: auto;">{{prettyMonth event.startDate}}</p>
+      <p style="font-size: 25px;margin-bottom:60px;">{{prettyDay event.startDate}}</p>
       
       
       <h5 class="name-event">{{event.title}}</h5>
-      <p>por <span class="organizer">{{event.author.name}}</span></p>
+      <p>Organizado por <span class="organizer">{{event.author.name}}</span></p>
       {{#if event.price }}
         <p>EUR {{event.price}}.00</p>
         {{else}}

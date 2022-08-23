@@ -1,6 +1,27 @@
 <div class="col-xl-4 col-lg-4 col-md-12">
   <div class="d-grid">
-    <P>Te has registrado en el evento <strong>{{event.title}}</strong> {{prettyDate event.startDate}}</P>
+    <P>Te has registrado en el evento:
+      <br>
+      <strong>{{event.title}}</strong>
+      <br> 
+      <p style="margin-bottom:0"><strong>FECHA</strong></p>
+      <p>{{prettyDate event.startDate}}, {{prettyHour event.startDate}}:{{prettyMinutes event.startDate}}</p>
+    </P>
+    <p style="margin-bottom:0"><strong>UBICACIÓN</strong></p>
+
+    {{#if event.address}}
+      <p style="margin-bottom:0">{{event.address}}</p>
+        {{#hasLocation event}}
+          <a href="http://maps.google.com/maps?q={{event.location.coordinates.[1]}},{{event.location.coordinates.[0]}}" target="_blank" style="font-size: 14px;">ver mapa</a>
+        {{/hasLocation}}     
+    {{else}}
+      Online
+    {{/if}}
+    <br>
+    <br>
+    <P>Hemos enviado tu entrada a tu dirección de email. </P>
+
+
     {{! <button class="btn btn-primary" type="submit">Registrar</button> }}
     <form action="/events/{{event.id}}/buyticket" method="post">
         <a href="" class="btn btn-primary"style="width:100%;">Guarda tu entrada.</a>
