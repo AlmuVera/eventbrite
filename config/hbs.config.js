@@ -44,6 +44,17 @@ hbs.registerHelper("marker", function (event) {
 });
 
 
+// hbs.registerHelper("marker", function (event) {
+//   const [ lng, lat ]  = event.location?.coordinates;
+//   const {title} = event;
+//   const marker = [{ title, lng, lat }];
+
+//   return new hbs.SafeString(
+//       `<script>const gMarkers = ${JSON.stringify(marker)}</script>`
+//     );
+// });
+
+
 //I use it to add link to the map 
 hbs.registerHelper("hasLocation", function (event, options) {
   if (event.location?.coordinates) {

@@ -38,7 +38,7 @@ const eventSchema = new Schema({
   price: {
     type: String,
     min: 0,
-    required: "",
+    
   },
   startDate: {
     type: Date,
@@ -62,7 +62,7 @@ const eventSchema = new Schema({
  
   availability: {
     type: Number,
-    required: "Es necesario indicar la capacidad de asistentes al evento",
+    // required: "Es necesario indicar la capacidad de asistentes al evento",
   },
 
   //   ticketStatus: String, //sold out or available

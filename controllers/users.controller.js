@@ -23,9 +23,9 @@ module.exports.tickets = (req, res, next) => {
         if(user.tickets){
             // console.log(user.tickets)
             res.render("users/tickets", { user });
-            console.log(user.tickets)
+    
         } else {
-            console.log("this user doesn't have tickets yet")
+            //console.log("this user doesn't have tickets yet")
             res.redirect("/events");
         }
     })

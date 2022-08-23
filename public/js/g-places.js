@@ -10,7 +10,7 @@ function initGMap() {
     if (mapContainer) {
       const center = { lat: 40.289091521914756, lng: -5.19295834917235 }
       const map = new google.maps.Map(mapContainer, {
-        zoom: 13,
+        zoom: 16,
         center: center,
       });
     

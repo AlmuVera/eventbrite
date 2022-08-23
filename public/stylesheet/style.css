@@ -450,6 +450,10 @@ outline: none;
     color: #4c4a60;
   }
 
+  .hidden{
+    visibility: hidden;
+  }
+
   #id-location-selection{
     /* width: 120px; */
     height: 60px;

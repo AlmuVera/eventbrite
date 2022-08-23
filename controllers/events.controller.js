@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { User, Event } = require("../models");
+const { sendRegistrationEvent } = require("../config/mailer.config");
+const { tickets } = require("./users.controller");
 
 module.exports.list = (req, res, next) => {
   const { lat, lng, title } = req.query;
@@ -10,14 +12,14 @@ module.exports.list = (req, res, next) => {
       $near: {
         $geometry: {
           type: "Point",
-          coordinates: [lng, lat]
-       },
-       $maxDistance: 10000 //10km
-     }
-   }
+          coordinates: [lng, lat],
+        },
+        $maxDistance: 10000, //10km
+      },
+    };
   }
   if (title) {
-   criterial.title = new RegExp(title, 'i'); 
+    criterial.title = new RegExp(title, "i");
   }
 
   Event.find(criterial)
@@ -30,15 +32,32 @@ module.exports.list = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
   let eventIsOwner;
-  Event.findById(req.params.id)
-    .populate("author")
-    .then((eventdata) => {
-      if (res.locals.currentUser.equals(eventdata.author._id)) {
-        eventIsOwner = true;
-      }
-      return eventdata;
+  let alreadyRegistered;
+  User.findById(res.locals.currentUser)
+    .then((user) => {
+      user.tickets.forEach((ticket) => {
+        if (ticket.equals(req.params.id)) {
+          alreadyRegistered = true;
+        }
+      });
     })
-    .then((event) => res.render("events/detail", { event, eventIsOwner }))
+    .then(() => {
+      Event.findById(req.params.id)
+        .populate("author")
+        .then((eventdata) => {
+          if (res.locals.currentUser.equals(eventdata.author._id)) {
+            eventIsOwner = true;
+          }
+          return eventdata;
+        })
+        .then((event) =>
+          res.render("events/detail", {
+            event,
+            eventIsOwner,
+            alreadyRegistered,
+          })
+        );
+    })
     .catch((error) => next(error));
 };
 
@@ -54,9 +73,9 @@ module.exports.create = (req, res, next) => {
   };
   if (lat && lng) {
     event.location = {
-      type: 'Point',
-      coordinates: [lng, lat]
-    }
+      type: "Point",
+      coordinates: [lng, lat],
+    };
   }
 
   //else? online?
@@ -68,12 +87,9 @@ module.exports.create = (req, res, next) => {
     event.image =
       "https://www.telemadrid.es/2019/05/23/programas/madrid-trabaja/eventbrite_2124397588_7022681_1300x731.png";
   }
-  console.log(req.file);
-
-  // return res.json(req.body)
 
   Event.create(event)
-    .then((event) => res.redirect("/events"))
+    .then((event) => res.redirect("/users/list"))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         console.error(error);
@@ -95,8 +111,7 @@ module.exports.update = (req, res, next) => {
       return eventdata;
     })
     .then((event) => {
-      console.log(event);
-      res.render("events/update", { event, eventIsOwner });
+      res.redirect("/users/list", { event, eventIsOwner });
     })
     .catch((error) => next(error));
 };
@@ -131,10 +146,6 @@ module.exports.doUpdate = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-
-
-
-
 module.exports.delete = (req, res, next) => {
   Event.findById(req.params.id)
     .populate("author")
@@ -145,28 +156,27 @@ module.exports.delete = (req, res, next) => {
         );
       }
       res.redirect("/users/list");
-      
     })
     .catch((error) => next(error));
 };
 //tickets of the currentUser: users have tickets
 module.exports.buyticket = (req, res, next) => {
-  User.updateOne(
+  User.findOneAndUpdate(
     { _id: res.locals.currentUser._id },
     { $addToSet: { tickets: req.params.id } }
   )
-    .then((result) => {
-   
-      res.render("users/tickets");
+    .then(() => {
+      Event.findOne({ _id: req.params.id }).then((event) => {
+        // console.log(JSON.stringify(event))
+        sendRegistrationEvent(event, res.locals.currentUser);
+        res.redirect("/users/tickets");
+      });
     })
     .catch((error) => next(error));
 };
-//revisar esto:
 
 module.exports.buyticketconfirmation = (req, res, next) => {
   Event.findById(req.params.id)
     .then((event) => res.render("events/buyticket", { event }))
     .catch((error) => next(error));
 };
-
-
